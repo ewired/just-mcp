@@ -172,6 +172,7 @@ if (Deno.env.get("ENABLE_DEBUG_TOOL")) {
   server.addTool({
     name: "cwd",
     description: "Get the working directory that the MCP server is running in",
+    parameters: z.object({}),
     execute: () => Promise.resolve(PROJECT),
   });
 }
@@ -181,19 +182,13 @@ const recipes = await getJustRecipes();
 for (const [recipeName, recipe] of Object.entries(recipes)) {
   if (ALLOWED_RECIPES && !ALLOWED_RECIPES.includes(recipeName)) continue;
 
-  const parameters = recipe.parameters.length
-    ? z.object(Object.fromEntries(
-      recipe.parameters.map(
-        (param) => [
-          param.name,
-          createParameterSchema(param, recipeName),
-        ],
-      ),
-    ))
-    : undefined;
+  const parameters = z.object(Object.fromEntries(
+    recipe.parameters
+      .map((param) => [param.name, createParameterSchema(param, recipeName)]),
+  ));
 
   if (Deno.env.get("SHOW_RECIPES")) {
-    const schema = parameters && zodToJsonSchema(parameters);
+    const schema = zodToJsonSchema(parameters);
     console.log({ recipeName, recipe, schema });
     continue;
   }
