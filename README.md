@@ -59,7 +59,7 @@ for the GitHub Copilot agent frontend.
                 "run",
                 "-A",
                 // Use a specific commit unless you really trust me
-                "https://raw.githubusercontent.com/ewired/just-mcp/f7ab00098a111d07b262795cf4202b9999fd2b32/just.ts"
+                "https://raw.githubusercontent.com/ewired/just-mcp/b1dd6a1b871eefc13100d4bbd2ff533e3adad8d2/just.ts"
                 // All further arguments are passed first to `just`
             ],
             "env": {
