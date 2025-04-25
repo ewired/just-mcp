@@ -1,0 +1,20 @@
+# Type check and lint the project
+check +files="just.ts":
+    deno check {{files}}
+    deno lint {{files}}
+
+# Run the tests
+test *test_files:
+    deno test {{test_files}}
+
+# Build the project
+build:
+    @echo "The build is successful because you use Deno and there is no build step"
+
+# Deploy the project to a target (production or staging)
+deploy target="staging":
+    @echo "Deployed to {{target}}"
+
+# Drop the production database (intended only for humans with human brains)
+drop_production_db:
+    @echo "Sending your production data to heaven"

@@ -1,0 +1,20 @@
+{
+    "servers": {
+        "just": {
+            "type": "stdio",
+            "command": "deno",
+            "args": [
+                "run",
+                "-A",
+                "${workspaceFolder}/just.ts",
+                "-f",
+                "${workspaceFolder}/Justfile.example"
+            ],
+            "env": {
+                "PROJECT": "${workspaceFolder}",
+                "ALLOWED_RECIPES": "check,build,test,deploy",
+                "NO_COLOR": "1"
+            }
+        }
+    }
+}
