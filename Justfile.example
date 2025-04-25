@@ -1,13 +1,13 @@
-# Type check and lint the project
+# Type check and lint the entire project. Use after changes to detect errors outside the active files.
 check +files="just.ts":
     deno check {{files}}
     deno lint {{files}}
 
-# Run the tests
+# Run a set of test files, by default all test files in the project.
 test *test_files:
     deno test {{test_files}}
 
-# Build the project
+# Build the project.
 build:
     @echo "The build is successful because you use Deno and there is no build step"
 
